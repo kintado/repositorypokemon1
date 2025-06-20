@@ -1,66 +1,27 @@
 import { Routes } from '@angular/router';
-import { AppShellComponent } from './app-shell-component/app-shell-component';
+import { Home } from './home/home';
+import { Chisiamo } from './chisiamo/chisiamo';
+import { Contatti } from './contatti/contatti';
+import { Pikachu } from './pikachu/pikachu';
+import { Bulbasaur } from './bulbasaur/bulbasaur';
+import { Charmander } from './charmander/charmander';
+import { Pichu } from './pichu/pichu';
+import { Raichu } from './raichu/raichu';
+import { General } from './general/general';
 
 export const routes: Routes = [
-  {
-    path: '',
-     component: AppShellComponent,
-    children: [
-      
-      
-      {
-        path: 'about',
-        loadComponent: () =>
-          import('./chisiamo/chisiamo').then(m => m.Chisiamo),
-        title: 'Chi siamo'
-      },
-      {
-        path: 'contact',
-        loadComponent: () =>
-          import('./contatti/contatti').then(m => m.Contatti),
-        title: 'Contatti'
-      },
-      {
-        path: 'bulbasaur',
-        loadComponent: () =>
-          import('./bulbasaur/bulbasaur').then(m => m.Bulbasaur),
-        title: 'Bulbasaur'
-      },
-      {
-        path: 'charmander',
-        loadComponent: () =>
-          import('./charmander/charmander').then(m => m.Charmander),
-        title: 'Charmander'
-      },
-      {
-        path: 'pikachu',
-        loadComponent: () =>
-          import('./pikachu/pikachu').then(m => m.Pikachu),
-        title: 'Pikachu',
-        children: [
-          {
-            path: 'pichu',
-            loadComponent: () =>
-              import('./pichu/pichu').then(m => m.Pichu),
-            title: 'Pichu'
-          },
-          {
-            path: 'raichu',
-            loadComponent: () =>
-              import('./raichu/raichu').then(m => m.Raichu),
-            title: 'Raichu'
-          }
-        ]
-      },
-      {
-        path: 'general',
-        outlet: 'genout',
-        loadComponent: () =>
-          import('./general/general').then(m => m.General),
-        title: 'General'
-      }
-    ]
-  },
-  // fallback per eventuali URL non riconosciute
-  { path: '**', redirectTo: '' }
+  
+    { path: '', component: Home, title: 'Home' },
+    { path: 'about', component: Chisiamo, title: 'Chi siamo' },
+    { path: 'contact', component: Contatti, title: 'Contatti' },
+    
+    { path: 'bulbasaur', component: Bulbasaur, title: 'Bulbasaur' },
+    {
+        path: 'charmander', component: Charmander, title: 'Charmander'
+    },
+    { path: 'pikachu', component: Pikachu, title: 'Pikachu' , children: [
+                                                                            { path: 'pichu', component: Pichu, title: 'Pichu' },
+                                                                    { path: 'raichu', component: Raichu, title: 'Raichu' }
+                                                                        ]},
+    { path: 'general', component: General, title: 'General', outlet: 'genout'} 
 ];
