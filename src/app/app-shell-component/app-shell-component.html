@@ -1,6 +1,9 @@
+<!-- app-shell-component.component.html -->
 <div class="container">
-  <h1>I MIEI POKEMON</h1>
+  <h1>I MIEI POKÉMON</h1>
+  <!-- named outlet -->
   <router-outlet name="genout"></router-outlet>
+
   <div class="row">
     <div class="col">
       <h2>Pikachu</h2>
@@ -15,11 +18,11 @@
       <p><a routerLink="/charmander">Dettagli...</a></p>
     </div>
   </div>
+
   <div>
-    <router-outlet />
-    
-
+    <!-- primary outlet -->
+    <router-outlet></router-outlet>
   </div>
-  <a [routerLink]="[{outlets: { genout: ['general']}}]">GENERAL</a>
 
+  <a [routerLink]="[{ outlets: { genout: ['general'] } }]">GENERAL</a>
 </div>
